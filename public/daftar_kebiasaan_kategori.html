@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mindful Habit - Habit List &amp; Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#2dd4bf",
+                    "tertiary-container": "#b4c1be",
+                    "outline": "#6b7a76",
+                    "tertiary-fixed-dim": "#bcc9c6",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary": "#55615f",
+                    "secondary-container": "#64a8fe",
+                    "surface-container-highest": "#d3e4fe",
+                    "inverse-primary": "#3cddc7",
+                    "on-surface-variant": "#3c4a46",
+                    "primary-fixed-dim": "#3cddc7",
+                    "on-tertiary-fixed-variant": "#3d4947",
+                    "on-background": "#0b1c30",
+                    "on-primary-fixed-variant": "#005047",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#bacac5",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#006b5f",
+                    "surface-container-high": "#dce9ff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#434f4d",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed-variant": "#004883",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-surface": "#0b1c30",
+                    "on-primary-container": "#00574d",
+                    "on-primary-fixed": "#00201c",
+                    "on-tertiary-fixed": "#121e1c",
+                    "error": "#ba1a1a",
+                    "surface-container": "#e5eeff",
+                    "surface-tint": "#006b5f",
+                    "surface-variant": "#d3e4fe",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#62fae3",
+                    "background": "#f8f9ff",
+                    "secondary": "#0060ac",
+                    "on-secondary-container": "#003c70",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#d8e5e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "stack-lg": "32px",
+                    "margin-page": "24px",
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "label-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "label-lg": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.04em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display": [
+                            "34px",
+                            {
+                                    "lineHeight": "42px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .surface-1-shadow {
+            box-shadow: 0 4px 15px rgba(100, 168, 254, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md pb-[88px] min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-background docked full-width top-0 z-40 sticky">
+<div class="flex justify-between items-center w-full px-margin-page h-16 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-unit cursor-pointer hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-all duration-200 rounded-full p-2 -ml-2">
+<img alt="User profile photo" class="w-8 h-8 rounded-full" data-alt="A small, circular avatar image showing a generic user profile icon in soft mint green and white, fitting the minimalist light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNWS5apqpmFQvQJm41zxmxo6yrYCTzYAFgp9cckoUDNxLm-bVf_-R7iJroz1DMgcoI6yiaEXnxmj1wnFpVHjrCcOBvaTle2VHh123WxiFESHDWLI4RmU-4iyNLAVzwAT5_T6bbghsYQjwCCKtoU1_Kzn0G9YOgdyXRGQGP1-cvl1PPxFX_Hv1x8B4hO5p_thybXsURLIera-jD7e78rWug77o-AXLXYT3NEQoPMP8oI9Mf_W_dA8YgcpSAwFBTNTxbEWbXp1-GM-UH"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Mindful Habit</h1>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors scale-95 active:scale-90 transition-all duration-200 rounded-full p-2 -mr-2 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-screen-xl mx-auto px-margin-page pt-stack-md flex flex-col gap-stack-lg">
+<!-- Search & Tabs Header Area -->
+<section class="flex flex-col gap-stack-md">
+<!-- Search Bar -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-none rounded-[12px] py-3 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary-container transition-shadow surface-1-shadow font-body-lg text-body-lg" placeholder="Search habits..." type="text"/>
+</div>
+<!-- Tab Navigation (Chips style) -->
+<div class="flex overflow-x-auto hide-scrollbar gap-stack-sm pb-2 -mx-margin-page px-margin-page md:mx-0 md:px-0">
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-primary-container text-on-primary-container font-label-lg text-label-lg transition-colors">All</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors font-label-lg text-label-lg border border-transparent">Health</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors font-label-lg text-label-lg border border-transparent">Worship</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors font-label-lg text-label-lg border border-transparent">Personal</button>
+</div>
+</section>
+<!-- Bento Grid Layout for Categories -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-lg">
+<!-- Category: Health -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Health</h2>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<!-- Habit Card 1 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-gutter surface-1-shadow flex items-center justify-between transition-transform active:scale-[0.98]">
+<div class="flex items-center gap-gutter">
+<button class="w-[48px] h-[48px] rounded-full border-2 border-outline-variant flex items-center justify-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100">check</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Morning Jog</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Daily</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" title="WhatsApp Notifications Enabled">chat</span>
+<div class="w-10 h-6 bg-primary-container rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Habit Card 2 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-gutter surface-1-shadow flex items-center justify-between transition-transform active:scale-[0.98]">
+<div class="flex items-center gap-gutter">
+<button class="w-[48px] h-[48px] rounded-full bg-primary-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">check</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface line-through opacity-70">Drink Water</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Daily • 8 Glasses</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]" title="WhatsApp Notifications Disabled">chat</span>
+<div class="w-10 h-6 bg-surface-container-highest rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Worship -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">mosque</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Worship</h2>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<!-- Habit Card 3 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-gutter surface-1-shadow flex items-center justify-between transition-transform active:scale-[0.98]">
+<div class="flex items-center gap-gutter">
+<button class="w-[48px] h-[48px] rounded-full border-2 border-outline-variant flex items-center justify-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100">check</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Fajr Prayer</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Daily</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" title="WhatsApp Notifications Enabled">chat</span>
+<div class="w-10 h-6 bg-primary-container rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary-container rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Personal -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Personal</h2>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<!-- Habit Card 4 -->
+<div class="bg-surface-container-lowest rounded-[16px] p-gutter surface-1-shadow flex items-center justify-between transition-transform active:scale-[0.98]">
+<div class="flex items-center gap-gutter">
+<button class="w-[48px] h-[48px] rounded-full border-2 border-outline-variant flex items-center justify-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100">check</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Read 10 Pages</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Daily</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]" title="WhatsApp Notifications Disabled">chat</span>
+<div class="w-10 h-6 bg-surface-container-highest rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FAB (Visible mainly on mobile/tablet if needed, but keeping it as requested) -->
+<button class="fixed bottom-[100px] right-margin-page w-14 h-14 bg-gradient-to-br from-primary-container to-secondary-container rounded-full shadow-lg flex items-center justify-center text-on-primary hover:scale-105 active:scale-95 transition-all duration-200 z-50">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-4px_15px_0_rgba(0,96,172,0.04)] docked full-width rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-110 active:scale-95 duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:text-primary transition-colors scale-110 active:scale-95 duration-200 gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">checklist</span>
+<span class="font-label-sm text-label-sm">Habits</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-110 active:scale-95 duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-sm text-label-sm">Add</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-110 active:scale-95 duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-110 active:scale-95 duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+</body></html>
